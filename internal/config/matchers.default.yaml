@@ -1,0 +1,12 @@
+rate_limit_patterns:
+  - "Claude usage limit reached"
+  - "rate_limit_error"
+  - "Your limit will reset at"
+  - "rate limit"
+  - "429"
+prompt_patterns:
+  - "Do you want to proceed?"
+  - "Allow once"
+  - "Allow always"
+  - "(Y/n)"
+  - "(y/N)"

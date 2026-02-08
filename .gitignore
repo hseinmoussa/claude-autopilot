@@ -1,0 +1,45 @@
+# Binaries
+claude-autopilot
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary
+*.test
+
+# Output of go coverage
+*.out
+
+# Go workspace
+go.work
+go.work.sum
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+*.log.1
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+bin/
+
+# Tool versions
+.tool-versions
+
+# Conductor context
+.context/

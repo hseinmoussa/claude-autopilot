@@ -1,0 +1,35 @@
+# claude-autopilot
+> Autonomous task runner for Claude Code. Queues coding tasks, detects rate limits, waits for reset, and auto-resumes so Claude keeps working while you sleep.
+
+## What it does
+- Wraps Claude Code CLI as a subprocess
+- Monitors output for rate-limit signals (exit codes, stderr/stdout patterns)
+- Parses reset timestamps (timezone-aware, 12hr/24hr formats)
+- Waits and retries automatically when limits reset
+- Uses native --resume for session-aware continuation (Claude Code v2.0+)
+- Queues multiple tasks with deterministic priority ordering
+- Persists state with crash recovery (atomic writes, flock-based locking)
+- Sends notifications when work completes (terminal bell, webhook, desktop)
+
+## Install
+go install github.com/hseinmoussa/claude-autopilot@latest
+
+## Quick usage
+claude-autopilot add "Implement auth module" --dir . --priority 1
+claude-autopilot run --yes
+claude-autopilot status
+
+## Key commands
+- add: queue a new task
+- run: execute all tasks with auto-retry
+- list: show tasks in execution order
+- status: show runner state and next resume time
+- retry: re-queue a failed task
+- cancel: cancel a pending task
+- config: manage settings (webhook_url, hang_timeout, etc.)
+
+## Language
+Go (single binary, zero runtime dependencies)
+
+## License
+MIT

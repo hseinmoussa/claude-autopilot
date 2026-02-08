@@ -1,0 +1,41 @@
+# Example multi-task queue file for claude-autopilot
+# Place in ~/.claude-autopilot/tasks.yaml or .autopilot/tasks.yaml
+# Tasks separated by --- document separators
+
+id: setup-auth-module
+title: "Setup auth module"
+priority: 1
+working_dir: /path/to/project
+skip_permissions: true
+prompt: |
+  Create a JWT authentication module with login/signup endpoints.
+  Use Go + chi router. Write tests.
+context_files:
+  - src/routes.go
+  - docs/auth-spec.md
+model: claude-sonnet-4-5-20250929
+max_retries: 5
+
+---
+
+id: add-database-migrations
+title: "Add database migrations"
+priority: 2
+working_dir: /path/to/project
+skip_permissions: true
+prompt: |
+  Create database migration files for the user and session tables.
+  Use golang-migrate format. Include up and down migrations.
+
+---
+
+id: integrate-stripe
+title: "Integrate Stripe payments"
+priority: 3
+working_dir: /path/to/project
+prompt: |
+  Add Stripe payment integration for subscription billing.
+  Include webhook handlers for payment events.
+flags:
+  - "--allowedTools"
+  - "Edit,Bash"
